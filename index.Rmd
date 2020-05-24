@@ -224,7 +224,7 @@ background-position: 100% 0%
 
 --
 
-- Podemos passar funções como argumentos de outras funções e obter  como retorno um vetor, isto é, poderemos utilizar **funcionais**;
+- Podemos passar funções como argumentos de outras funções e obter  como retorno um vetor, isto é, poderemos utilizar/escrever **funcionais**;
 
 --
 
@@ -370,6 +370,7 @@ background-position: 100% 0%
 
 --
 
+</br></br>
 
 ```{r, echo=FALSE,out.width="600cm", out.height="500px",fig.cap="Fim.",fig.show='hold',fig.align='center'}
 knitr::include_graphics("img/aplausos.gif")
