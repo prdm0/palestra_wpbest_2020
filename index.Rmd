@@ -115,30 +115,36 @@ background-image: url("img/logo-texto.png")
 background-size: 200px
 background-position: 100% 0%
 
-# Caso julge não atender os pré-requisitos
+# Caso julge não ter os pré-requisitos
 
 
 --
-
-.fadeInDownBig.animated[
+.pull-left[
 - Livro de Estatística Computacional do Prof. Pedro Rafael: </br>
-[* **https://prdm0.github.io/aulas_computacional/** *](https://prdm0.github.io/aulas_computacional/); </br></br>
+[* **https://prdm0.github.io/aulas_computacional/** *](https://prdm0.github.io/aulas_computacional/); </br>
 
 
 - Meus slides da disciplina de Programação em linguagem R: </br>
-[* **https://prdm0.github.io/aulas_computacional/aulas_r.pdf** *](https://prdm0.github.io/aulas_computacional/aulas_r.pdf);</br></br>
+[* **https://prdm0.github.io/aulas_computacional/aulas_r.pdf** *](https://prdm0.github.io/aulas_computacional/aulas_r.pdf);</br>
 
 
 - Livro Advanced R, Ed. 2, escrito por Hadley Wickham:
-</br> [* **https://adv-r.hadley.nz/** *](https://adv-r.hadley.nz/) ; </br></br>
+</br> [* **https://adv-r.hadley.nz/** *](https://adv-r.hadley.nz/) ; </br>
 
 
 - Livro básico em língua portuguesa de programação em R escrito por Luiz Torgo: </br>
-[* **https://cran.r-project.org/doc/contrib/Torgo-ProgrammingIntro.pdf** *](https://cran.r-project.org/doc/contrib/Torgo-ProgrammingIntro.pdf);</br></br>
+[* **https://cran.r-project.org/doc/contrib/Torgo-ProgrammingIntro.pdf** *](https://cran.r-project.org/doc/contrib/Torgo-ProgrammingIntro.pdf);</br>
 
 - Manuais da Linguagem R: </br>
 [* **https://cran.r-project.org/manuals.html** *](https://cran.r-project.org/manuals.html).
 ]
+
+.fadeInDownBig.animated[
+.pull-right[
+```{r, echo=FALSE,out.width="350px",  out.height="350px",fig.cap="",fig.show='hold',fig.align='center'}
+knitr::include_graphics("img/estudo.gif")
+```
+]]
 
 ---
 background-position: 100% 0%
@@ -165,17 +171,21 @@ background-position: 100% 0%
 </blockquote>
 .right[-- <cite>**Bjarne Stroustrup**</cite>]
 
-]
+</br></br></br></br>
+.font50[**Nota**: C++ **não** é uma linguagem de programação de paradigma funcional. C++ é uma linguagem orientada à objeto - OO. Porém, a frase de seu criador se encaixa como filosofia para uso de funcionais. 
+]]
 
 --
 
-</br></br></br></br>
 .fadeInLeft.animated[
 .pull-right[
+</br>
 ```{r, echo=FALSE,out.width="430cm", out.height="300px",fig.cap="Bjarne Stroustrup, criador da Linguagem de Programação C++.",fig.show='hold',fig.align='center'}
 knitr::include_graphics("img/bjarne.jpg")
 ```
 ]]
+
+
 
 ---
 background-position: 100% 0%
