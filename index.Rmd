@@ -172,7 +172,7 @@ background-position: 100% 0%
 </br></br></br></br>
 .fadeInLeft.animated[
 .pull-right[
-```{r, echo=FALSE,out.width="430cm", out.height="300px",fig.cap="Bjarne Stroustrup.",fig.show='hold',fig.align='center'}
+```{r, echo=FALSE,out.width="430cm", out.height="300px",fig.cap="Bjarne Stroustrup, criador da Linguagem de Programação C++.",fig.show='hold',fig.align='center'}
 knitr::include_graphics("img/bjarne.jpg")
 ```
 ]]
