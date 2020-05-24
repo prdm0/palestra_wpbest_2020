@@ -172,7 +172,7 @@ background-position: 100% 0%
 .right[-- <cite>**Bjarne Stroustrup**</cite>]
 
 </br></br></br></br>
-.font50[**Nota**: C++ **não** é uma linguagem de programação de paradigma funcional. C++ é uma linguagem orientada à objeto - OO. Porém, a frase de seu criador se encaixa como filosofia para uso de funcionais. 
+.font50[**Nota**: C++ **não** é uma linguagem de programação de paradigma funcional. C++ é uma linguagem multiparadigma mas que sobre todos os possíveis paradigmas prevalece a Orientação à Objeto - OO. Porém, a frase de seu criador se encaixa como filosofia para uso de funcionais. 
 ]]
 
 --
@@ -290,20 +290,25 @@ background-position: 100% 0%
 
 </br>
 
+.pull-left[
 - O código ficará mais **limpo** e **elegante**; </br></br>
 
---
 
 - O código ficará mais fácil de **manter** e **debugar**; </br></br>
 
---
 
 - Utilizando os funcionais disponíveis pelo **r-base** ou por pacotes como o **purrr**, **furrr**  ou qualquer outro pacote que implemente funcionais de forma eficientes, você poderá tornar o seu código computacionalmente mais **eficaz**; </br></br>
 
---
 
 - É fácil **paralelizar** códigos usando funcionais. Tudo poderá ser feito sem grandes modificações do código original. Isso é uma grande vantagem. 
-
+]
+--
+.fadeInDownBig.animated[
+.pull-right[
+```{r, echo=FALSE,out.width="300px",  out.height="300px",fig.cap="Você gostou dos benefícios do uso de funcionais?",fig.show='hold',fig.align='center'}
+knitr::include_graphics("img/bom.gif")
+```
+]]
 
 ---
 background-image: url("img/logo-texto.png")
@@ -316,7 +321,7 @@ background-position: 100% 0%
 knitr::include_graphics("img/purrr_hex.png")
 ```
 
-O pacote **purrr** ([**https://github.com/tidyverse/purrr**](https://github.com/tidyverse/purrr)), entraga para quem trabalha com estatística, diversos funcionais que são de grande utilidade na implementação de códigos. Esses funcionais somado com os funcionais do **r-base** são ferramentas essenciais para quem deseja produzir códigos eficientes em **R**.
+O pacote **purrr** ([**https://github.com/tidyverse/purrr**](https://github.com/tidyverse/purrr)), entrega para quem trabalha com estatística, diversos funcionais que são de grande utilidade na implementação de códigos. Esses funcionais somado com os funcionais do **r-base** são ferramentas essenciais para quem deseja produzir códigos eficientes em **R**.
 
 ---
 background-position: 100% 0%
@@ -359,8 +364,7 @@ background-position: 100% 0%
 </br>
 
 --
-
-.fadeInLeft.animated[
+.fadeInDownBig.animated[
 - Uso do conceito de **funções anônimas** e **closures** para a escrita generalizada de $F$; </br></br>
 
 - Uso de **funcionais** para iterar o procedimento de MC; </br></br>

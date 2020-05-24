@@ -40,8 +40,8 @@ background-position: 100% 0%
 # Sigam-nos nas redes sociais
 
 .pull-left[
-<div id="htmlwidget-2ba06847ff4f60325ebe" style="width:504px;height:432px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2ba06847ff4f60325ebe">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[-7.1404,-34.846199],17,{"maxWidth":150,"minWidth":150,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f7833e502fdfc2b62df2" style="width:504px;height:432px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f7833e502fdfc2b62df2">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[-7.1404,-34.846199],17,{"maxWidth":150,"minWidth":150,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
@@ -165,7 +165,7 @@ background-position: 100% 0%
 .right[-- &lt;cite&gt;**Bjarne Stroustrup**&lt;/cite&gt;]
 
 &lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;
-.font50[**Nota**: C++ **não** é uma linguagem de programação de paradigma funcional. C++ é uma linguagem orientada à objeto - OO. Porém, a frase de seu criador se encaixa como filosofia para uso de funcionais. 
+.font50[**Nota**: C++ **não** é uma linguagem de programação de paradigma funcional. C++ é uma linguagem multiparadigma mas que sobre todos os possíveis paradigmas prevalece a Orientação à Objeto - OO. Porém, a frase de seu criador se encaixa como filosofia para uso de funcionais. 
 ]]
 
 --
@@ -286,20 +286,26 @@ background-position: 100% 0%
 
 &lt;/br&gt;
 
+.pull-left[
 - O código ficará mais **limpo** e **elegante**; &lt;/br&gt;&lt;/br&gt;
 
---
 
 - O código ficará mais fácil de **manter** e **debugar**; &lt;/br&gt;&lt;/br&gt;
 
---
 
 - Utilizando os funcionais disponíveis pelo **r-base** ou por pacotes como o **purrr**, **furrr**  ou qualquer outro pacote que implemente funcionais de forma eficientes, você poderá tornar o seu código computacionalmente mais **eficaz**; &lt;/br&gt;&lt;/br&gt;
 
---
 
 - É fácil **paralelizar** códigos usando funcionais. Tudo poderá ser feito sem grandes modificações do código original. Isso é uma grande vantagem. 
-
+]
+--
+.fadeInDownBig.animated[
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/bom.gif" alt="Você gostou dos benefícios do uso de funcionais?" width="300px" height="300px" /&gt;
+&lt;p class="caption"&gt;Você gostou dos benefícios do uso de funcionais?&lt;/p&gt;
+&lt;/div&gt;
+]]
 
 ---
 background-image: url("img/logo-texto.png")
@@ -313,7 +319,7 @@ background-position: 100% 0%
 &lt;p class="caption"&gt;Hex do pacote purrr.&lt;/p&gt;
 &lt;/div&gt;
 
-O pacote **purrr** ([**https://github.com/tidyverse/purrr**](https://github.com/tidyverse/purrr)), entraga para quem trabalha com estatística, diversos funcionais que são de grande utilidade na implementação de códigos. Esses funcionais somado com os funcionais do **r-base** são ferramentas essenciais para quem deseja produzir códigos eficientes em **R**.
+O pacote **purrr** ([**https://github.com/tidyverse/purrr**](https://github.com/tidyverse/purrr)), entrega para quem trabalha com estatística, diversos funcionais que são de grande utilidade na implementação de códigos. Esses funcionais somado com os funcionais do **r-base** são ferramentas essenciais para quem deseja produzir códigos eficientes em **R**.
 
 ---
 background-position: 100% 0%
@@ -356,8 +362,7 @@ background-position: 100% 0%
 &lt;/br&gt;
 
 --
-
-.fadeInLeft.animated[
+.fadeInDownBig.animated[
 - Uso do conceito de **funções anônimas** e **closures** para a escrita generalizada de `\(F\)`; &lt;/br&gt;&lt;/br&gt;
 
 - Uso de **funcionais** para iterar o procedimento de MC; &lt;/br&gt;&lt;/br&gt;
