@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Uso de funcionais em R: evitando loops e seus benefícios</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Prof. Dr. Pedro Rafael Diniz Marinho" />
+    <link href="libs/font-awesome-5.3.1/css/fontawesome-all.min.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+    <script src="libs/jquery-1.12.4/jquery.min.js"></script>
+    <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-1.3.1/leaflet.js"></script>
+    <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+    <script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+    <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+    <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
+    <link rel="stylesheet" href="tema.css" type="text/css" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="animate.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Uso de funcionais em R: evitando loops e seus benefícios
+### Prof. Dr. Pedro Rafael Diniz Marinho
+### Departamento de Estatística - UFPB
+### 29 de maio de 2020
+
+---
+
+
+
+
+
+background-image: url("img/logo-texto.png")
+background-size: 200px
+background-position: 100% 0%
+
+
+# Sigam-nos nas redes sociais
+
+&lt;/br&gt;
+&lt;/br&gt;
+
+#### Prof. Dr. Pedro Rafael D. Marinho:
+[<i class="fas  fa-paper-plane "></i> **pedro.rafael.marinho@gmail.com**](mailto:pedro.rafael.marinho@gmail.com)&lt;/br&gt;
+[<i class="fab  fa-github "></i> **Meu GitHub: https://github.com/prdm0**](https://github.com/prdm0)&lt;/br&gt; 
+[<i class="fab  fa-instagram "></i> **@prdm.0**](https://www.instagram.com/prdm.0/)&lt;/br&gt;
+[<i class="fab  fa-twitter "></i> **@Pedro_Rafael1**](https://twitter.com/Pedro_Rafael1)  
+
+#### Redes sociais e outras informações do Departamento de Estatística da UFPB:
+
+[<i class="fas  fa-link "></i> **Site do Departamento**: **http://www.de.ufpb.br/**](http://www.de.ufpb.br/)  
+[<i class="fab  fa-instagram "></i> **@estatisticaufpb**](https://www.instagram.com/estatisticaufpb/)  
+[<i class="fab  fa-twitter "></i> **@estatisticaufpb**](https://twitter.com/estatisticaufpb)  
+[<i class="fab  fa-github "></i> **GitHub do DE: https://github.com/de-ufpb**](https://github.com/de-ufpb)  
+
+---
+background-image: url("img/logo-texto.png")
+background-size: 200px
+background-position: 100% 0%
+
+# Onde estamos no mundo?
+
+.pull-left[
+<div id="htmlwidget-7b16aa5f889098bad641" style="width:504px;height:432px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7b16aa5f889098bad641">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[-7.1404,-34.846199],17,{"maxWidth":150,"minWidth":150,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+]
+
+--
+
+.fadeInLeft.animated[
+
+.pull-right[
+O mapa ao lado foi produzido facilmente utilizando a biblioteca **leaflet**.
+
+```r
+library(leaflet)
+leaflet() %&gt;% addTiles() %&gt;% 
+  setView(
+  -34.846199, -7.140400, zoom = 17,
+  options = popupOptions(
+    minWidth = 200,
+    maxWidth = 340
+  )
+)
+```
+]]
+
+---
+background-position: 100% 0%
+class: inverse, center, middle
+
+# Pré-requisitos para o acompanhamento dessa palestra
+
+
+
+---
+background-image: url("img/logo-texto.png")
+background-size: 200px
+background-position: 100% 0%
+
+# Pré-requisitos
+
+O espectador deverá ter algum contato no que se refere à programação em linguagem R. Alguns aspectos importantes são:
+
+--
+
+- Principais estruturas de dados em **R**;
+
+- Instruções de condição: `if`, `else` e `switch`;
+
+- Emprego dos operadores `break` e `next`;
+
+- Instruções de repetição: `for`, `while` e `repeat`.
+
+--
+
+## Pré-requisitos de ferramentas computacionais:
+
+Ter a linguagem de programação **R** instalada; &lt;/br&gt;
+
+Instalar o pacote [**purrr**](https://purrr.tidyverse.org/) instalado e carregado:
+
+.fadeInDownBig.animated[
+
+```r
+install.packages("purrr")
+library(purrr)
+```
+]
+
+
+---
+background-image: url("img/logo-texto.png")
+background-size: 200px
+background-position: 100% 0%
+
+# Caso julge não atender os pré-requisitos
+
+
+--
+
+.fadeInDownBig.animated[
+- Livro de Estatística Computacional do Prof. Pedro Rafael: &lt;/br&gt;
+[* **https://prdm0.github.io/aulas_computacional/** *](https://prdm0.github.io/aulas_computacional/); &lt;/br&gt;&lt;/br&gt;
+
+
+- Meus slides da disciplina de Programação em linguagem R: &lt;/br&gt;
+[* **https://prdm0.github.io/aulas_computacional/aulas_r.pdf** *](https://prdm0.github.io/aulas_computacional/aulas_r.pdf);&lt;/br&gt;&lt;/br&gt;
+
+
+- Livro Advanced R, Ed. 2, escrito por Hadley Wickham:
+&lt;/br&gt; [* **https://adv-r.hadley.nz/** *](https://adv-r.hadley.nz/) ; &lt;/br&gt;&lt;/br&gt;
+
+
+- Livro básico em língua portuguesa de programação em R escrito por Luiz Torgo: &lt;/br&gt;
+[* **https://cran.r-project.org/doc/contrib/Torgo-ProgrammingIntro.pdf** *](https://cran.r-project.org/doc/contrib/Torgo-ProgrammingIntro.pdf);&lt;/br&gt;&lt;/br&gt;
+
+- Manuais da Linguagem R: &lt;/br&gt;
+[* **https://cran.r-project.org/manuals.html** *](https://cran.r-project.org/manuals.html).
+]
+
+---
+background-position: 100% 0%
+class: inverse, center, middle
+  
+# Programação Funcional
+
+
+&lt;img src="img/lambda.gif" width="250px" height="200px" style="display: block; margin: auto;" /&gt;
+
+---
+background-image: url("img/logo-texto.png")
+background-size: 200px
+background-position: 100% 0%
+
+&lt;/br&gt;&lt;/br&gt;
+
+.pull-left[
+
+&lt;blockquote&gt;
+"*Para se tornar significativamente mais confiável, o código deve se tornar mais transparente. Em particular, condições e loops aninhados devem ser vistos com grande suspeita. Fluxos de controle complicados confundem os programadores. Código confuso geralmente oculta bugs.*"
+&lt;/blockquote&gt;
+.right[-- &lt;cite&gt;**Bjarne Stroustrup**&lt;/cite&gt;]
+
+]
+
+--
+
+&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;
+.fadeInLeft.animated[
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/bjarne.jpg" alt="Bjarne Stroustrup." width="430cm" height="300px" /&gt;
+&lt;p class="caption"&gt;Bjarne Stroustrup.&lt;/p&gt;
+&lt;/div&gt;
+]]
+
+---
+background-position: 100% 0%
+class: inverse, center, middle
+
+# R é uma linguagem de programação multiparadigma
+
+---
+background-image: url("img/logo-texto.png")
+background-size: 200px
+background-position: 100% 0%
+
+--
+
+.fadeInLeft.animated[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/chambers.png" alt="Chambers, John M. Object-oriented programming, functional programming and R. Statistical Science. (2014). 167-180." width="470cm" height="600px" /&gt;
+&lt;p class="caption"&gt;Chambers, John M. Object-oriented programming, functional programming and R. Statistical Science. (2014). 167-180.&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+background-image: url("img/logo-texto.png")
+background-size: 200px
+background-position: 100% 0%
+
+# O que linguagens funcionais permite e que R também permite?
+
+--
+
+- Funções podem ser enxergada uma estrutura de dados qualquer;
+
+--
+
+
+- Podemos passar funções para variáveis;
+
+--
+
+
+- Podemos passar funções para listas;
+
+--
+
+- Podemos definir funções dentro de funções;
+
+--
+
+- Podemos passar funções como argumentos de outras funções e obter  como retorno um vetor, isto é, poderemos utilizar **funcionais**;
+
+--
+
+- Podemos devolver funções como resultados de funções, a exemplo dos **closures**.
+
+&lt;/br&gt;
+
+--
+
+.fadeInDownBig.animated[
+A rigor, **R** não é uma linguagem funcional pois linguagens funcionais exigem que venhamos escrever funções puras, isto é, funções que sempre devolvem o mesmo resultados. No entanto, adotar o estilo de programação funcional poderá oferecer diversas vantangens. Dividir o problema entre funções puras e funções impuras tende levar a criação de códigos mais fáceis de entender.
+]
+
+---
+background-image: url("img/logo-texto.png")
+background-size: 200px
+background-position: 100% 0%
+
+.pull-left[
+
+&lt;blockquote&gt;
+"*É difícil descrever exatamente o que é um estilo funcional, mas geralmente acho que isso significa decompor um grande problema em pedaços menores e depois resolver cada peça com uma função ou combinação de funções. Ao usar um estilo funcional, você se esforça para decompor os componentes do problema em funções isoladas que operam independentemente. Cada função assumida por si só é simples e direta de entender; a complexidade é tratada compondo funções de várias maneiras.*"
+&lt;/blockquote&gt;
+.right[-- &lt;cite&gt;**Hadley Wickham**&lt;/cite&gt;]
+
+]
+
+--
+
+&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;
+.fadeInLeft.animated[
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/hadley.png" alt="Hadley Wickham." width="380cm" height="400px" /&gt;
+&lt;p class="caption"&gt;Hadley Wickham.&lt;/p&gt;
+&lt;/div&gt;
+]]
+
+
+---
+background-position: 100% 0%
+class: inverse, center, middle
+
+# O que eu ganho em considerar aprender a utilizar funcionais?
+
+---
+background-image: url("img/logo-texto.png")
+background-size: 200px
+background-position: 100% 0%
+
+# Vantagens dos funcionais 
+
+&lt;/br&gt;
+
+- O código ficará mais **limpo** e **elegante**; &lt;/br&gt;&lt;/br&gt;
+
+--
+
+- O código ficará mais fácil de **manter** e **debugar**; &lt;/br&gt;&lt;/br&gt;
+
+--
+
+- Utilizando os funcionais disponíveis pelo **r-base** ou por pacotes como o **purrr**, **furrr**  ou qualquer outro pacote que implemente funcionais de forma eficientes, você poderá tornar o seu código computacionalmente mais **eficaz**; &lt;/br&gt;&lt;/br&gt;
+
+--
+
+- É fácil **paralelizar** códigos usando funcionais. Tudo poderá ser feito sem grandes modificações do código original. Isso é uma grande vantagem. 
+
+
+---
+background-image: url("img/logo-texto.png")
+background-size: 200px
+background-position: 100% 0%
+
+&lt;/br&gt;
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/purrr_hex.png" alt="Hex do pacote purrr." width="380cm" height="400px" /&gt;
+&lt;p class="caption"&gt;Hex do pacote purrr.&lt;/p&gt;
+&lt;/div&gt;
+
+O pacote **purrr** ([**https://github.com/tidyverse/purrr**](https://github.com/tidyverse/purrr)), entraga para quem trabalha com estatística, diversos funcionais que são de grande utilidade na implementação de códigos. Esses funcionais somado com os funcionais do **r-base** são ferramentas essenciais para quem deseja produzir códigos eficientes em **R**.
+
+---
+background-position: 100% 0%
+class: inverse, center, middle
+
+# Solucionando um problema com o uso de funcionais
+
+
+---
+background-image: url("img/logo-texto.png")
+background-size: 200px
+background-position: 100% 0%
+
+# Uso de funcionais em um problema hipotético 
+&lt;/br&gt;
+
+
+
+.fadeInDownBig.animated[
+Seja `\(G\)` uma distribuição de probabilidade qualquer com vetor de parâmetros `\(\xi\)` e `\(F\)` uma função de distribuição tal que, dado o conhecimento de `\(G\)`, temos que:
+
+`$$F(x; \theta) = G^a(x),$$`
+
+&lt;/br&gt; 
+
+com `\(\theta = (\xi, a)\)`, tal que `\(a &gt; 0\)` e `\(x&gt;0\)`. Diremos que uma v.a. tal que `\(X \sim F\)` segue distribuição **Exp-G**.
+
+&lt;/br&gt;
+
+Dado `\(G\)`, realize uma simulação de **Monte-Carlo - MC** para estudar o viés dos **estimadores numéricos de máxima verossimilhança** obtidos pelo método **BFGS** para os parâmetros que indexam a distribuição `\(F\)`. Nas iterações de MC, considere obter os cenários provenientes da distribuição `\(G\)`. 
+]
+
+---
+background-image: url("img/logo-texto.png")
+background-size: 200px
+background-position: 100% 0%
+
+# O que será feito?
+  
+&lt;/br&gt;
+
+--
+
+.fadeInLeft.animated[
+- Uso do conceito de **funções anônimas** e **closures** para a escrita generalizada de `\(F\)`; &lt;/br&gt;&lt;/br&gt;
+
+- Uso de **funcionais** para iterar o procedimento de MC; &lt;/br&gt;&lt;/br&gt;
+
+- **Paralelização** do código; &lt;/br&gt;&lt;/br&gt;
+
+- Introdução de uma **barra de progresso** mensurando o tempo de término da simulação de MC; &lt;/br&gt;&lt;/br&gt;
+
+- Outros detalhes serão apresentados no código.
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"ratio": "16:9",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
