@@ -383,3 +383,17 @@ background-position: 100% 0%
 
 - Outros detalhes serão apresentados no código.
 ]
+
+
+---
+background-image: url("img/logo-texto.png")
+background-size: 200px
+background-position: 100% 0%
+
+</br></br>
+
+
+```{r, echo=FALSE,out.width="600cm", out.height="500px",fig.cap="Fim.",fig.show='hold',fig.align='center'}
+knitr::include_graphics("img/aplausos.gif")
+```
+
