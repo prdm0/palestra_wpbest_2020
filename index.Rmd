@@ -27,36 +27,12 @@ mono_light(
 )
 ```
 
-
-background-image: url("img/logo-texto.png")
-background-size: 200px
-background-position: 100% 0%
-
-
-# Sigam-nos nas redes sociais
-
-</br>
-</br>
-
-#### Prof. Dr. Pedro Rafael D. Marinho:
-[`r icon::fa("paper-plane")` **pedro.rafael.marinho@gmail.com**](mailto:pedro.rafael.marinho@gmail.com)</br>
-[`r icon::fa("github")` **Meu GitHub: https://github.com/prdm0**](https://github.com/prdm0)</br> 
-[`r icon::fa("instagram")` **@prdm.0**](https://www.instagram.com/prdm.0/)</br>
-[`r icon::fa("twitter")` **@Pedro_Rafael1**](https://twitter.com/Pedro_Rafael1)  
-
-#### Redes sociais e outras informações do Departamento de Estatística da UFPB:
-
-[`r icon::fa("link")` **Site do Departamento**: **http://www.de.ufpb.br/**](http://www.de.ufpb.br/)  
-[`r icon::fa("instagram")` **@estatisticaufpb**](https://www.instagram.com/estatisticaufpb/)  
-[`r icon::fa("twitter")` **@estatisticaufpb**](https://twitter.com/estatisticaufpb)  
-[`r icon::fa("github")` **GitHub do DE: https://github.com/de-ufpb**](https://github.com/de-ufpb)  
-
 ---
 background-image: url("img/logo-texto.png")
 background-size: 200px
 background-position: 100% 0%
 
-# Onde estamos no mundo?
+# Sigam-nos nas redes sociais
 
 .pull-left[
 ```{r fig.height=6, eval=require('leaflet'), echo = FALSE}
@@ -77,18 +53,18 @@ leaflet() %>% addTiles() %>%
 .fadeInLeft.animated[
 
 .pull-right[
-O mapa ao lado foi produzido facilmente utilizando a biblioteca **leaflet**.
-```{r fig.height=6, eval = FALSE}
-library(leaflet)
-leaflet() %>% addTiles() %>% 
-  setView(
-  -34.846199, -7.140400, zoom = 17,
-  options = popupOptions(
-    minWidth = 200,
-    maxWidth = 340
-  )
-)
-```
+#### Prof. Dr. Pedro Rafael D. Marinho:
+[`r icon::fa("paper-plane")` **pedro.rafael.marinho@gmail.com**](mailto:pedro.rafael.marinho@gmail.com)</br>
+[`r icon::fa("github")` **Meu GitHub: https://github.com/prdm0**](https://github.com/prdm0)</br> 
+[`r icon::fa("instagram")` **@prdm.0**](https://www.instagram.com/prdm.0/)</br>
+[`r icon::fa("twitter")` **@Pedro_Rafael1**](https://twitter.com/Pedro_Rafael1)  
+
+#### Redes sociais e outras informações do Departamento de Estatística da UFPB:
+
+[`r icon::fa("link")` **Site do Departamento**: **http://www.de.ufpb.br/**](http://www.de.ufpb.br/)  
+[`r icon::fa("instagram")` **@estatisticaufpb**](https://www.instagram.com/estatisticaufpb/)  
+[`r icon::fa("twitter")` **@estatisticaufpb**](https://twitter.com/estatisticaufpb)  
+[`r icon::fa("github")` **GitHub do DE: https://github.com/de-ufpb**](https://github.com/de-ufpb)  
 ]]
 
 ---
@@ -267,6 +243,8 @@ background-image: url("img/logo-texto.png")
 background-size: 200px
 background-position: 100% 0%
 
+</br>
+
 .pull-left[
 
 <blockquote>
@@ -390,7 +368,7 @@ background-image: url("img/logo-texto.png")
 background-size: 200px
 background-position: 100% 0%
 
-</br></br>
+--
 
 
 ```{r, echo=FALSE,out.width="600cm", out.height="500px",fig.cap="Fim.",fig.show='hold',fig.align='center'}

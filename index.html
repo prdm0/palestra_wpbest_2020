@@ -4,7 +4,6 @@
     <title>Uso de funcionais em R: evitando loops e seus benefícios</title>
     <meta charset="utf-8" />
     <meta name="author" content="Prof. Dr. Pedro Rafael Diniz Marinho" />
-    <link href="libs/font-awesome-5.3.1/css/fontawesome-all.min.css" rel="stylesheet" />
     <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
     <script src="libs/jquery-1.12.4/jquery.min.js"></script>
     <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
@@ -14,6 +13,7 @@
     <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
     <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
     <script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
+    <link href="libs/font-awesome-5.3.1/css/fontawesome-all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="tema.css" type="text/css" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="animate.css" type="text/css" />
@@ -32,17 +32,23 @@ class: center, middle, inverse, title-slide
 
 
 
-
+---
 background-image: url("img/logo-texto.png")
 background-size: 200px
 background-position: 100% 0%
 
-
 # Sigam-nos nas redes sociais
 
-&lt;/br&gt;
-&lt;/br&gt;
+.pull-left[
+<div id="htmlwidget-f0b972678a526eb7d428" style="width:504px;height:432px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f0b972678a526eb7d428">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[-7.1404,-34.846199],17,{"maxWidth":150,"minWidth":150,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+]
 
+--
+
+.fadeInLeft.animated[
+
+.pull-right[
 #### Prof. Dr. Pedro Rafael D. Marinho:
 [<i class="fas  fa-paper-plane "></i> **pedro.rafael.marinho@gmail.com**](mailto:pedro.rafael.marinho@gmail.com)&lt;/br&gt;
 [<i class="fab  fa-github "></i> **Meu GitHub: https://github.com/prdm0**](https://github.com/prdm0)&lt;/br&gt; 
@@ -55,37 +61,6 @@ background-position: 100% 0%
 [<i class="fab  fa-instagram "></i> **@estatisticaufpb**](https://www.instagram.com/estatisticaufpb/)  
 [<i class="fab  fa-twitter "></i> **@estatisticaufpb**](https://twitter.com/estatisticaufpb)  
 [<i class="fab  fa-github "></i> **GitHub do DE: https://github.com/de-ufpb**](https://github.com/de-ufpb)  
-
----
-background-image: url("img/logo-texto.png")
-background-size: 200px
-background-position: 100% 0%
-
-# Onde estamos no mundo?
-
-.pull-left[
-<div id="htmlwidget-2ffb16576ae9b31d397d" style="width:504px;height:432px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2ffb16576ae9b31d397d">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[-7.1404,-34.846199],17,{"maxWidth":150,"minWidth":150,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
-]
-
---
-
-.fadeInLeft.animated[
-
-.pull-right[
-O mapa ao lado foi produzido facilmente utilizando a biblioteca **leaflet**.
-
-```r
-library(leaflet)
-leaflet() %&gt;% addTiles() %&gt;% 
-  setView(
-  -34.846199, -7.140400, zoom = 17,
-  options = popupOptions(
-    minWidth = 200,
-    maxWidth = 340
-  )
-)
-```
 ]]
 
 ---
@@ -265,6 +240,8 @@ background-image: url("img/logo-texto.png")
 background-size: 200px
 background-position: 100% 0%
 
+&lt;/br&gt;
+
 .pull-left[
 
 &lt;blockquote&gt;
@@ -390,7 +367,7 @@ background-image: url("img/logo-texto.png")
 background-size: 200px
 background-position: 100% 0%
 
-&lt;/br&gt;&lt;/br&gt;
+--
 
 
 &lt;div class="figure" style="text-align: center"&gt;
