@@ -96,7 +96,7 @@ O espectador deverá ter algum contato no que se refere à programação em ling
 
 --
 
-## O que devo instalar?
+## O que devo instalar a priori?
 
 Ter a linguagem de programação **R** instalada; </br>
 
