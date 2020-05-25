@@ -260,7 +260,7 @@ background-position: 100% 0%
 <blockquote>
 "*É difícil descrever exatamente o que é um estilo funcional, mas geralmente acho que isso significa decompor um grande problema em pedaços menores e depois resolver cada peça com uma função ou combinação de funções. Ao usar um estilo funcional, você se esforça para decompor os componentes do problema em funções isoladas que operam independentemente. Cada função assumida por si só é simples e direta de entender; a complexidade é tratada compondo funções de várias maneiras.*"
 </blockquote>
-.right[-- <cite>**Hadley Wickham**</cite>]
+.right[-- <cite>**Hadley Wickham - Advanced R, Ed. 2**</cite>]
 
 ]
 
@@ -309,6 +309,35 @@ background-position: 100% 0%
 knitr::include_graphics("img/bom.gif")
 ```
 ]]
+
+---
+background-image: url("img/logo-texto.png")
+background-size: 200px
+background-position: 100% 0%
+
+# Evite códigos em forma de espaguete
+
+.pull-left[
+- Se você estiver fazendo algo mais de uma vez, ele deverá pertencer à uma função;
+
+- Na Programação Funcional - PF, todas as ações são apenas implementações de funções que você escreveu (composição de funções);
+
+- Tentar se aproximar da PF irá fazer com que você substitua longos blocos de códigos por chamada de funções, reduzindo **código espaguete**;
+
+- Não é regra, mas se você está escrevendo loops em excesso em R, você tem grandes chances de estar fazendo algo errado.
+
+- Evite muitas condições aninhadas para não cair em uma **pirâmide de destruição**.
+
+- O uso de funcionais se torna fácil quando você não tem códigos **espaguete**.
+]
+
+.fadeInDownBig.animated[
+.pull-right[
+```{r, echo=FALSE,out.width="400px",  out.height="380px",fig.cap="Evite códigos em forma de espaguete.",fig.show='hold',fig.align='center'}
+knitr::include_graphics("img/espaguete.png")
+```
+]]
+
 
 ---
 background-image: url("img/logo-texto.png")
@@ -384,9 +413,9 @@ background-position: 100% 0%
 
 --
 
-</br></br>
+</br></br></br>
 
-```{r, echo=FALSE,out.width="600cm", out.height="500px",fig.cap="Fim.",fig.show='hold',fig.align='center'}
+```{r, echo=FALSE,out.width="500cm", out.height="400px",fig.cap="Fim.",fig.show='hold',fig.align='center'}
 knitr::include_graphics("img/aplausos.gif")
 ```
 

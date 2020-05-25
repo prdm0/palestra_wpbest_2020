@@ -40,8 +40,8 @@ background-position: 100% 0%
 # Sigam-nos nas redes sociais
 
 .pull-left[
-<div id="htmlwidget-f7833e502fdfc2b62df2" style="width:504px;height:432px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f7833e502fdfc2b62df2">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[-7.1404,-34.846199],17,{"maxWidth":150,"minWidth":150,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-6b1fb064b145b8f1f30e" style="width:504px;height:432px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6b1fb064b145b8f1f30e">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[-7.1404,-34.846199],17,{"maxWidth":150,"minWidth":150,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
@@ -255,7 +255,7 @@ background-position: 100% 0%
 &lt;blockquote&gt;
 "*É difícil descrever exatamente o que é um estilo funcional, mas geralmente acho que isso significa decompor um grande problema em pedaços menores e depois resolver cada peça com uma função ou combinação de funções. Ao usar um estilo funcional, você se esforça para decompor os componentes do problema em funções isoladas que operam independentemente. Cada função assumida por si só é simples e direta de entender; a complexidade é tratada compondo funções de várias maneiras.*"
 &lt;/blockquote&gt;
-.right[-- &lt;cite&gt;**Hadley Wickham**&lt;/cite&gt;]
+.right[-- &lt;cite&gt;**Hadley Wickham - Advanced R, Ed. 2**&lt;/cite&gt;]
 
 ]
 
@@ -306,6 +306,36 @@ background-position: 100% 0%
 &lt;p class="caption"&gt;Você gostou dos benefícios do uso de funcionais?&lt;/p&gt;
 &lt;/div&gt;
 ]]
+
+---
+background-image: url("img/logo-texto.png")
+background-size: 200px
+background-position: 100% 0%
+
+# Evite códigos em forma de espaguete
+
+.pull-left[
+- Se você estiver fazendo algo mais de uma vez, ele deverá pertencer à uma função;
+
+- Na Programação Funcional - PF, todas as ações são apenas implementações de funções que você escreveu (composição de funções);
+
+- Tentar se aproximar da PF irá fazer com que você substitua longos blocos de códigos por chamada de funções, reduzindo **código espaguete**;
+
+- Não é regra, mas se você está escrevendo loops em excesso em R, você tem grandes chances de estar fazendo algo errado.
+
+- Evite muitas condições aninhadas para não cair em uma **pirâmide de destruição**.
+
+- O uso de funcionais se torna fácil quando você não tem códigos **espaguete**.
+]
+
+.fadeInDownBig.animated[
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/espaguete.png" alt="Evite códigos em forma de espaguete." width="400px" height="380px" /&gt;
+&lt;p class="caption"&gt;Evite códigos em forma de espaguete.&lt;/p&gt;
+&lt;/div&gt;
+]]
+
 
 ---
 background-image: url("img/logo-texto.png")
@@ -382,10 +412,10 @@ background-position: 100% 0%
 
 --
 
-&lt;/br&gt;&lt;/br&gt;
+&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;
 
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="img/aplausos.gif" alt="Fim." width="600cm" height="500px" /&gt;
+&lt;img src="img/aplausos.gif" alt="Fim." width="500cm" height="400px" /&gt;
 &lt;p class="caption"&gt;Fim.&lt;/p&gt;
 &lt;/div&gt;
     </textarea>
