@@ -415,6 +415,25 @@ background-position: 100% 0%
 - Outros detalhes serão apresentados no código.
 ]
 
+</br>
+
+**<center>Indo para o RStudio ...</center>**
+
+
+---
+background-image: url("img/logo-texto.png")
+background-size: 200px
+background-position: 100% 0%
+
+# Processador com múltiplos núcleos
+
+</br>
+
+```{r, echo=FALSE,out.width="420cm", out.height="380px",fig.cap="Imagem ilustrativa de um processador multicore.",fig.show='hold',fig.align='center'}
+knitr::include_graphics("img/processador_threads.png")
+```
+
+
 ---
 background-image: url("img/logo-texto.png")
 background-size: 200px
