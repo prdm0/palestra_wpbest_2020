@@ -80,9 +80,9 @@ background-image: url("img/logo-texto.png")
 background-size: 200px
 background-position: 100% 0%
 
-# Pré-requisitos
+# O que devo conhecer em R?
 
-O espectador deverá ter algum contato no que se refere à programação em linguagem R. Alguns aspectos importantes são:
+O espectador deverá ter algum contato no que se refere à programação em linguagem **R**. Alguns aspectos importantes são:
 
 --
 
@@ -96,7 +96,7 @@ O espectador deverá ter algum contato no que se refere à programação em ling
 
 --
 
-## Pré-requisitos de ferramentas computacionais:
+## O que devo instalar?
 
 Ter a linguagem de programação **R** instalada; </br>
 
@@ -212,7 +212,7 @@ background-image: url("img/logo-texto.png")
 background-size: 200px
 background-position: 100% 0%
 
-# O que linguagens funcionais permite e que R também permite?
+# O que linguagens funcionais permite e que **R** também permite?
 
 --
 
@@ -327,7 +327,7 @@ background-position: 100% 0%
 - Tentar se aproximar da PF irá fazer com que você substitua longos blocos de códigos por chamada de funções, reduzindo **código espaguete**;
 
 
-- Não é regra, mas se você está escrevendo loops em excesso em R, você tem grandes chances de estar fazendo algo errado;
+- Não é regra, mas se você está escrevendo loops em excesso em **R**, você tem grandes chances de estar fazendo algo errado;
 
 
 - Evite muitas condições aninhadas para não cair em uma **pirâmide de destruição**;
