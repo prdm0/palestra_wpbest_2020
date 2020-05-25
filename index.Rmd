@@ -365,6 +365,10 @@ class: inverse, center, middle
 
 
 ---
+background-image: url("img/programando.gif")
+background-size: cover
+
+---
 background-image: url("img/logo-texto.png")
 background-size: 200px
 background-position: 100% 0%
@@ -385,7 +389,7 @@ com $\theta = (\xi, a)$, tal que $a > 0$ e $x>0$. Diremos que uma v.a. tal que $
 
 </br>
 
-Dado $G$, realize uma simulação de **Monte-Carlo - MC** para estudar o viés dos **estimadores numéricos de máxima verossimilhança** obtidos pelo método **BFGS** para os parâmetros que indexam a distribuição $F$. Nas iterações de MC, considere obter os cenários provenientes da distribuição $G$. 
+Dado $G$, realize uma simulação de **Monte-Carlo - MC** para estudar o viés dos **estimadores numéricos de máxima verossimilhança** obtidos pelo método **BFGS** para os parâmetros que indexam a distribuição $F$. Nas iterações de **MC**, considere obter os cenários provenientes da distribuição $G$. 
 ]
 
 ---
@@ -401,11 +405,11 @@ background-position: 100% 0%
 .fadeInDownBig.animated[
 - Uso do conceito de **funções anônimas** e **closures** para a escrita generalizada de $F$; </br></br>
 
-- Uso de **funcionais** para iterar o procedimento de MC; </br></br>
+- Uso de **funcionais** para iterar o procedimento de **MC**; </br></br>
 
 - **Paralelização** do código; </br></br>
 
-- Introdução de uma **barra de progresso** mensurando o tempo de término da simulação de MC; </br></br>
+- Introdução de uma **barra de progresso** mensurando o tempo de término da simulação de **MC**; </br></br>
 
 - Outros detalhes serão apresentados no código.
 ]

@@ -40,8 +40,8 @@ background-position: 100% 0%
 # Sigam-nos nas redes sociais
 
 .pull-left[
-<div id="htmlwidget-0a0da215319c4e5eb97c" style="width:504px;height:432px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0a0da215319c4e5eb97c">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[-7.1404,-34.846199],17,{"maxWidth":150,"minWidth":150,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d246f43baa17796e7ab8" style="width:504px;height:432px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d246f43baa17796e7ab8">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[-7.1404,-34.846199],17,{"maxWidth":150,"minWidth":150,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
@@ -364,6 +364,10 @@ class: inverse, center, middle
 
 
 ---
+background-image: url("img/programando.gif")
+background-size: cover
+
+---
 background-image: url("img/logo-texto.png")
 background-size: 200px
 background-position: 100% 0%
@@ -384,7 +388,7 @@ com `\(\theta = (\xi, a)\)`, tal que `\(a &gt; 0\)` e `\(x&gt;0\)`. Diremos que 
 
 &lt;/br&gt;
 
-Dado `\(G\)`, realize uma simulação de **Monte-Carlo - MC** para estudar o viés dos **estimadores numéricos de máxima verossimilhança** obtidos pelo método **BFGS** para os parâmetros que indexam a distribuição `\(F\)`. Nas iterações de MC, considere obter os cenários provenientes da distribuição `\(G\)`. 
+Dado `\(G\)`, realize uma simulação de **Monte-Carlo - MC** para estudar o viés dos **estimadores numéricos de máxima verossimilhança** obtidos pelo método **BFGS** para os parâmetros que indexam a distribuição `\(F\)`. Nas iterações de **MC**, considere obter os cenários provenientes da distribuição `\(G\)`. 
 ]
 
 ---
@@ -400,11 +404,11 @@ background-position: 100% 0%
 .fadeInDownBig.animated[
 - Uso do conceito de **funções anônimas** e **closures** para a escrita generalizada de `\(F\)`; &lt;/br&gt;&lt;/br&gt;
 
-- Uso de **funcionais** para iterar o procedimento de MC; &lt;/br&gt;&lt;/br&gt;
+- Uso de **funcionais** para iterar o procedimento de **MC**; &lt;/br&gt;&lt;/br&gt;
 
 - **Paralelização** do código; &lt;/br&gt;&lt;/br&gt;
 
-- Introdução de uma **barra de progresso** mensurando o tempo de término da simulação de MC; &lt;/br&gt;&lt;/br&gt;
+- Introdução de uma **barra de progresso** mensurando o tempo de término da simulação de **MC**; &lt;/br&gt;&lt;/br&gt;
 
 - Outros detalhes serão apresentados no código.
 ]
