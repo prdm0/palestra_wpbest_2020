@@ -349,13 +349,14 @@ background-image: url("img/logo-texto.png")
 background-size: 200px
 background-position: 100% 0%
 
-</br>
 
-```{r, echo=FALSE,out.width="380cm", out.height="400px",fig.cap="Hex do pacote purrr.",fig.show='hold',fig.align='center'}
+```{r, echo=FALSE,out.width="360cm", out.height="380px",fig.cap="Hex do pacote purrr.",fig.show='hold',fig.align='center'}
 knitr::include_graphics("img/purrr_hex.png")
 ```
 
 O pacote **purrr** ([**https://github.com/tidyverse/purrr**](https://github.com/tidyverse/purrr)), entrega para quem trabalha com estatística, diversos funcionais que são de grande utilidade na implementação de códigos. Esses funcionais somado com os funcionais do **r-base** são ferramentas essenciais para quem deseja produzir códigos eficientes em **R**.
+
+Alguns detalhes sobre o uso do pacote **purrr** poderá ser encontrado no livro Advanced R, citado anteriormente, em [**https://adv-r.hadley.nz/functionals.html**](https://adv-r.hadley.nz/functionals.html).
 
 ---
 background-position: 100% 0%
@@ -414,17 +415,26 @@ background-position: 100% 0%
 - Outros detalhes serão apresentados no código.
 ]
 
-
 ---
 background-image: url("img/logo-texto.png")
 background-size: 200px
 background-position: 100% 0%
 
---
+# Referências
 
-</br></br></br>
+</br>
 
-```{r, echo=FALSE,out.width="500cm", out.height="400px",fig.cap="Fim.",fig.show='hold',fig.align='center'}
-knitr::include_graphics("img/aplausos.gif")
-```
+[1] Chambers, John M. **Object-oriented programming, functional programming and R**. Statistical Science 29.2 (2014): 167-180.  </br></br>
 
+[2] Wickham, Hadley. **Advanced r**. CRC press, 2019.</br></br>
+
+[3] Burns, Patrick. **The R inferno**. Lulu. com, 2011.</br></br> 
+
+[4] R Core Team. R: **A Language and Environment for Statistical Computing**. R Foundation for Statistical
+Computing, Vienna, Austria, 2016. URL [**https://www.R-project.org/**](https://www.R-project.org/). ISBN 3-900051-07-0.
+
+
+
+---
+background-image: url("img/aplausos.gif")
+background-size: cover
