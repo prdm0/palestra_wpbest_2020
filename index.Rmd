@@ -320,13 +320,18 @@ background-position: 100% 0%
 .pull-left[
 - Se você estiver fazendo algo mais de uma vez, ele deverá pertencer à uma função;
 
+
 - Na Programação Funcional - PF, todas as ações são apenas implementações de funções que você escreveu (composição de funções);
+
 
 - Tentar se aproximar da PF irá fazer com que você substitua longos blocos de códigos por chamada de funções, reduzindo **código espaguete**;
 
-- Não é regra, mas se você está escrevendo loops em excesso em R, você tem grandes chances de estar fazendo algo errado.
 
-- Evite muitas condições aninhadas para não cair em uma **pirâmide de destruição**.
+- Não é regra, mas se você está escrevendo loops em excesso em R, você tem grandes chances de estar fazendo algo errado;
+
+
+- Evite muitas condições aninhadas para não cair em uma **pirâmide de destruição**;
+
 
 - O uso de funcionais se torna fácil quando você não tem códigos **espaguete**.
 ]
