@@ -14,6 +14,7 @@ exp_weibull <- exp_g(g = pdf)
 # Note também que a função exp_g() é tão flexível a ponto de permitir parâmetros de g
 # sem mesmo saber quais são. Por exemplo, é possível definir o argumento log na função
 # exp_weibull(). Veja:
+
 exp_weibull <- exp_g(g = pdf) 
 exp_weibull(x = 1, alpha = 0.3, beta = 1.2, a = 1, log = F)
 
@@ -28,6 +29,14 @@ log_lik <- function(pdf) {
   }
 }
 
+# Exemplo: Passando um vetor x qualquer de dados e obtendo o valor da função 
+# log-verosimilhança multiplicada por -1, uma vez que optim() minimiza:
+
 log_lik_beta <- log_lik(pdf = exp_beta)
-                        
-log_lik_beta(x = 1, alpha = 1, beta = 1, a = 1)
+log_lik_beta(x = c(0.2, 0.2, 0.5, 0.65), alpha = 0.3, beta = 0.3, a = 1)
+
+
+# Testando se log_lik_beta() é uma implementação correta. Não precisa debugar, a estatística nos
+# diz onde queremos chegar:
+
+  
