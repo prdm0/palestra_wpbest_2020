@@ -40,8 +40,8 @@ background-position: 100% 0%
 # Sigam-nos nas redes sociais
 
 .pull-left[
-<div id="htmlwidget-e37c8128f04e0787928f" style="width:504px;height:432px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e37c8128f04e0787928f">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[-7.1404,-34.846199],17,{"maxWidth":150,"minWidth":150,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-3447f011c761bc9a6a6b" style="width:504px;height:432px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3447f011c761bc9a6a6b">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[-7.1404,-34.846199],17,{"maxWidth":150,"minWidth":150,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
@@ -357,6 +357,55 @@ O pacote **purrr** ([**https://github.com/tidyverse/purrr**](https://github.com/
 
 Alguns detalhes sobre o uso do pacote **purrr** poderá ser encontrado no livro Advanced R, citado anteriormente, em [**https://adv-r.hadley.nz/functionals.html**](https://adv-r.hadley.nz/functionals.html).
 
+---
+background-image: url("img/logo-texto.png")
+background-size: 200px
+background-position: 100% 0%
+
+# Funcionais não muito úteis
+
+
+.bounceInUp.animated[
+.scroll-box-7[
+.code70[
+
+  
+  ```r
+  # A função f() é um funcional.
+  f &lt;- function(x, func) func(x)
+  
+  # Passando uma função à f() por meio do argumento func.
+  # Foi passado à func uma função anônima.
+  f(x = c(1, 2, 7, 10), func = function(x) x + 1)
+  ```
+  
+  ```
+  ## [1]  2  3  8 11
+  ```
+]]]
+
+.bounceInUp.animated[
+.scroll-box-11[
+.code70[
+  
+  ```r
+  set.seed(0)
+  f &lt;- function() mean(runif(n = 10, min = 0, max = 1))
+  # A função loop() é um funcional.
+  loop &lt;- function(x, func) {
+   resultado &lt;- NULL
+   for (i in seq_along(x))
+      resultado &lt;- c(resultado, func())
+   resultado
+  }
+  
+  loop(x = 1:3, func = f)
+  ```
+  
+  ```
+  ## [1] 0.6350050 0.4872545 0.4620326
+  ```
+]]]
 ---
 background-position: 100% 0%
 class: inverse, center, middle
