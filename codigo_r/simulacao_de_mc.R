@@ -1,42 +1,106 @@
+library(purrr)
+library(furrr)
+library(numDeriv)
+library(tictoc)
+
 # Usando o conceito de closures na função exp_G().
-exp_g <- function(g, ...) {
+exp_g <- function(G, ...) {
   # Definindo uma função anônima. Funções anônimas são muito úteis na programação funcional.
   function(x, ..., a) { # Utilizano o operador dot-dot-dot.
-    g(x = x, ...) ^ a
+    numDeriv::grad(func = function(x) G(x = x, ...) ^ a, x = x)
   }
 }
 
 # pdf() é a função Weibull de parâmetros alpha e beta.
-pdf <- function(x, alpha, beta, ...) dweibull(x = x, shape = alpha, scale = beta, ...)
-exp_weibull <- exp_g(g = pdf)
+cdf_weibull <- function(x, alpha, beta, ...) pweibull(q = x, shape = alpha, scale = beta, ...)
+pdf_exp_weibull <- exp_g(G = cdf_weibull)
 
-# Exemplo: implementando a função exp_weibull apenas declarando G que é a função weibull.
+# Integrando a função pdf_exp_weibull():
+integrate(f = pdf_exp_weibull, lower = 0, upper = 100, alpha = 1.2, beta = 1.3, a = 1)
+
+# Exemplo: implementando a função exp_weibull apenas declarando G que é a cdf weibull.
 # Note também que a função exp_g() é tão flexível a ponto de permitir parâmetros de g
 # sem mesmo saber quais são. Por exemplo, é possível definir o argumento log na função
-# exp_weibull(). Veja:
+# pdf_exp_weibull(). Veja:
 
-exp_weibull <- exp_g(g = pdf) 
-exp_weibull(x = 1, alpha = 0.3, beta = 1.2, a = 1, log = F)
-
-# Exemplo: vamos perceber o quanto exp_G permitirá a construção de funções flexíveis. 
-
-exp_beta <- exp_g(g = function(x, alpha, beta, ...) dbeta(x = x, shape1 = alpha, shape2 = beta, ...))
+pdf_exp_weibull <- exp_g(G = cdf_weibull) 
+pdf_exp_weibull(x = 1, alpha = 0.3, beta = 1.2, a = 1, log = F)
 
 
-log_lik <- function(pdf) {
-  function(x, ...) {
-    -sum(log(pdf(x = x, ...)))
-  }
-}
+# Exemplo: vamos perceber o quanto exp_g permitirá a construção de funções flexíveis. 
+
+exp_beta <- exp_g(G = function(x, alpha, beta, ...) pbeta(q = x, shape1 = alpha, shape2 = beta, ...))
+
+# Integrando a função exp_beta():
+integrate(f = exp_beta, lower = 0, upper = 1, alpha = 1.2, beta = 1.3, a = 6)
 
 # Exemplo: Passando um vetor x qualquer de dados e obtendo o valor da função 
 # log-verosimilhança multiplicada por -1, uma vez que optim() minimiza:
+log_lik(par = c(1.2, 1.3, 1), x = c(0.2, 0.2, 0.5, 0.65))
 
-log_lik_beta <- log_lik(pdf = exp_beta)
-log_lik_beta(x = c(0.2, 0.2, 0.5, 0.65), alpha = 0.3, beta = 0.3, a = 1)
+# Testando a função de verossimilhança log_lik():
+amostra <- rweibull(n = 5000, shape = 2, scale = 3)
+result <- optim(fn = log_lik, par = c(2, 3, 1), x = amostra, method = "Nelder-Mead")
 
 
-# Testando se log_lik_beta() é uma implementação correta. Não precisa debugar, a estatística nos
-# diz onde queremos chegar:
-
+mc <- function(M = 1e4L, n = 250L, par_true = c(2, 3, 1)) {
   
+  alpha <- par_true[1L]
+  beta <- par_true[2L]
+  a <- par_true[3L]
+  
+  starts <- rep(1, length(par_true))
+  
+  
+  # Implementando a função de verossimilhança da weibull
+  log_lik <- function(par, x) {
+    alpha <- par[1L]
+    beta <- par[2L]
+    a <- par[3L]
+    -sum(log(pdf_exp_weibull(x = x, alpha = alpha, beta = beta, a = a)))
+  }
+  
+  # Tratamento de erro
+  myoptim <- 
+    function(...) 
+      tryCatch(
+        exp = optim(...),
+        error = function(e) 
+          NA
+      )
+  
+  # Uma única iteração de Monte-Carlo - MC:              
+  mc_one_step <- function(i) {
+  
+    # Não sei quantas vezes o repeat irá executar.
+    repeat{
+      cenario <- rweibull(n = n, shape = alpha, scale = beta)
+      result <- myoptim(fn = log_lik, par = starts, x = cenario) 
+      
+      if(!is.na(result) && result$convergence == 0) 
+        break
+    } # Encontrando uma amostra adequada.
+    
+    # Retornando as estimativas de máxima verossimilhança.
+    result$par 
+  }
+  
+ # Realizando todas as siterações de MC:
+ results_mc <- matrix(unlist(map(.x = 1L:M, .f = mc_one_step)), nrow = M, ncol = length(par_true), byrow = TRUE)
+ colnames(results_mc) <- c("alpha", "beta", "a")
+ 
+ # Obtendo a média das estimativas de máxima verossimilhança por parâmetro:
+ mean_est <- apply(X = results_mc, MARGIN = 2L, FUN = mean)
+ 
+ bias <- mean_est - par_true
+ 
+ list(results_mc = results_mc, mean_est = mean_est, bias = bias)
+ 
+} # Fim da simulação.
+
+tic()
+result <- mc(M = 1000L, n = 100, par_true = c(2, 3, 1))
+toc()
+
+
+
