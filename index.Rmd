@@ -482,16 +482,20 @@ background-position: 100% 0%
 
 </br>
 
-[1] Chambers, John M. **Object-oriented programming, functional programming and R**. Statistical Science 29.2 (2014): 167-180.  </br></br>
+[1] Burns, Patrick. **The R inferno**. Lulu. com, 2011.</br></br> 
 
-[2] Wickham, Hadley. **Advanced r**. CRC press, 2019.</br></br>
+[2] Chambers, John M. **Object-oriented programming, functional programming and R**. Statistical Science 29.2 (2014): 167-180.  </br></br>
 
-[3] Burns, Patrick. **The R inferno**. Lulu. com, 2011.</br></br> 
+[3] McCallum, Ethan, and Stephen Weston. **Parallel R**.  O'Reilly Media, Inc., 2011.</br></br>
 
 [4] R Core Team. R: **A Language and Environment for Statistical Computing**. R Foundation for Statistical
-Computing, Vienna, Austria, 2016. URL [**https://www.R-project.org/**](https://www.R-project.org/). ISBN 3-900051-07-0.
+Computing, Vienna, Austria, 2016. URL [**https://www.R-project.org/**](https://www.R-project.org/). ISBN 3-900051-07-0.</br></br>
 
-[5] McCallum, Ethan, and Stephen Weston. **Parallel R**.  O'Reilly Media, Inc., 2011.
+[5] Wickham, Hadley. **Advanced r**. CRC press, 2019.</br></br>
+
+ 
+
+
 
 ---
 background-image: url("img/aplausos.gif")

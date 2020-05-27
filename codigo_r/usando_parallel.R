@@ -3,7 +3,7 @@ library(numDeriv)
 library(tibble)
 library(parallel)
 library(pbapply)
-
+library(magrittr)
 
 # Usando o conceito de closures na função exp_G().
 exp_g <- function(G, ...) {

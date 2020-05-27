@@ -2,6 +2,7 @@ library(purrr)
 library(furrr)
 library(numDeriv)
 library(tibble)
+library(magrittr)
 
 # Usando o conceito de closures na função exp_G().
 exp_g <- function(G, ...) {
