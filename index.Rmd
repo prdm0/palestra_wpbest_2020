@@ -429,7 +429,7 @@ com $\theta = (\xi, a)$, tal que $a > 0$ e $x>0$. Diremos que uma v.a. tal que $
 
 </br>
 
-Dado $G$, realize uma simulação de **Monte-Carlo - MC** para estudar o viés dos **estimadores numéricos de máxima verossimilhança** obtidos pelo método **BFGS** para os parâmetros que indexam a distribuição $F$. Nas iterações de **MC**, considere obter os cenários provenientes da distribuição $G$. 
+Dado $G$, realize uma simulação de **Monte-Carlo - MC** para estudar o viés dos **estimadores numéricos de máxima verossimilhança** obtidos pelo método **Nelder-Mead** para os parâmetros que indexam a distribuição $F$. Nas iterações de **MC**, considere obter os cenários provenientes da distribuição $G$. 
 ]
 
 ---
@@ -491,7 +491,7 @@ background-position: 100% 0%
 [4] R Core Team. R: **A Language and Environment for Statistical Computing**. R Foundation for Statistical
 Computing, Vienna, Austria, 2016. URL [**https://www.R-project.org/**](https://www.R-project.org/). ISBN 3-900051-07-0.
 
-
+[5] McCallum, Ethan, and Stephen Weston. **Parallel R**.  O'Reilly Media, Inc., 2011.
 
 ---
 background-image: url("img/aplausos.gif")

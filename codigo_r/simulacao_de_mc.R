@@ -3,7 +3,6 @@ library(furrr)
 library(numDeriv)
 library(tibble)
 
-
 # Usando o conceito de closures na função exp_G().
 exp_g <- function(G, ...) {
   # Definindo uma função anônima. Funções anônimas são muito úteis na programação funcional.
@@ -97,10 +96,10 @@ mc <-
     alpha <- par_true[1L]
     beta <- par_true[2L]
     a <- par_true[3L]
-    
+
     starts <- rep(1, length(par_true))
-    
-    
+
+
     # Implementando a função de verossimilhança da weibull
     log_lik <- function(par, x) {
       alpha <- par[1L]
@@ -113,7 +112,7 @@ mc <-
         a = a
       )))
     }
-    
+
     # Tratamento de erro
     myoptim <-
       function(...)
@@ -122,7 +121,7 @@ mc <-
           error = function(e)
             NA
         )
-    
+
     # Uma única iteração de Monte-Carlo - MC:
     mc_one_step <- function(i) {
       # Não sei quantas vezes o repeat irá executar.
@@ -131,20 +130,22 @@ mc <-
                             shape = alpha,
                             scale = beta)
         result <- myoptim(fn = log_lik, par = starts, x = cenario)
-        
-        
+
+
         if (!is.na(result) && result$convergence == 0)
           break
       } # Encontrando uma amostra adequada.
-      
+
       # Retornando as estimativas de máxima verossimilhança.
       result$par
     }
-    
+
     plan(multiprocess)
-    
+
     # Realizando todas as siterações de MC:
-    
+
+
+
     if (parallel == TRUE) {
       results_mc <-
         future_map(
@@ -168,18 +169,18 @@ mc <-
                byrow = TRUE) %>%
         as_tibble
     }
-    
+
     colnames(results_mc) <- c("alpha", "beta", "a")
-    
+
     # Obtendo a média das estimativas de máxima verossimilhança por parâmetro:
     mean_est <- apply(X = results_mc, MARGIN = 2L, FUN = mean)
-    
+
     bias <- mean_est - par_true
-    
+
     list(results_mc = results_mc,
          mean_est = mean_est,
          bias = bias)
-    
+
   } # Fim da simulação.
 
 set.seed(1)
@@ -188,5 +189,5 @@ system.time(result <-
                 M = 1e3L,
                 n = 100,
                 par_true = c(2, 3, 1),
-                parallel = F
+                parallel = T
               ))
