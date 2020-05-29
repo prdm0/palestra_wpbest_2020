@@ -1,6 +1,4 @@
-library(purrr)
 library(numDeriv)
-library(tibble)
 library(parallel)
 library(pbapply)
 library(magrittr)
@@ -25,77 +23,13 @@ cdf_weibull <-
              shape = alpha,
              scale = beta,
              ...)
-pdf_exp_weibull <- exp_g(G = cdf_weibull)
-
-# Integrando a função pdf_exp_weibull():
-integrate(
-  f = pdf_exp_weibull,
-  lower = 0,
-  upper = 100,
-  alpha = 1.2,
-  beta = 1.3,
-  a = 1
-)
-
-# Exemplo: implementando a função exp_weibull apenas declarando G que é a cdf weibull.
-# Note também que a função exp_g() é tão flexível a ponto de permitir parâmetros de g
-# sem mesmo saber quais são. Por exemplo, é possível definir o argumento log na função
-# pdf_exp_weibull(). Veja:
 
 pdf_exp_weibull <- exp_g(G = cdf_weibull)
-pdf_exp_weibull(
-  x = 1,
-  alpha = 0.3,
-  beta = 1.2,
-  a = 1,
-  log = F
-)
-
-
-# Exemplo: vamos perceber o quanto exp_g permitirá a construção de funções flexíveis.
-
-exp_beta <-
-  exp_g(
-    G = function(x, alpha, beta, ...)
-      pbeta(
-        q = x,
-        shape1 = alpha,
-        shape2 = beta,
-        ...
-      )
-  )
-
-# Integrando a função exp_beta():
-integrate(
-  f = exp_beta,
-  lower = 0,
-  upper = 1,
-  alpha = 1.2,
-  beta = 1.3,
-  a = 6
-)
-
-# Exemplo: Passando um vetor x qualquer de dados e obtendo o valor da função
-# log-verosimilhança multiplicada por -1, uma vez que optim() minimiza:
-log_lik(par = c(1.2, 1.3, 1), x = c(0.2, 0.2, 0.5, 0.65))
-
-# Testando a função de verossimilhança log_lik():
-amostra <- rweibull(n = 5000, shape = 2, scale = 3)
-result <-
-  optim(
-    fn = log_lik,
-    par = c(2, 3, 1),
-    x = amostra,
-    method = "Nelder-Mead"
-  )
-
 
 mc <-
   function(M = 1e4L,
            n = 250L,
-           par_true = c(2, 3, 1),
-           parallel = TRUE,
-           cluster) {
+           par_true = c(2, 3, 1)) {
     alpha <- par_true[1L]
     beta <- par_true[2L]
     a <- par_true[3L]
@@ -148,8 +82,7 @@ mc <-
       unlist %>%
       matrix(nrow = M,
              ncol = length(par_true),
-             byrow = TRUE) %>%
-      as_tibble
+             byrow = TRUE) 
     
     colnames(results_mc) <- c("alpha", "beta", "a")
     
@@ -164,26 +97,26 @@ mc <-
     
   }
 
-cores <- getOption("mc.cores", 1L) 
+cores <- getOption("mc.cores", 8L) 
 
 # Criando um cluster PSOCK:
-
 cl <- makeCluster(cores, type = "PSOCK")
 
 clusterExport(
   cl = cl,
-  varlist = c("mc", "pdf_exp_weibull"),
+  varlist = c("mc", "exp_g", "cdf_weibull", "pdf_exp_weibull"),
   envir = environment()
 )
 
+clusterEvalQ(cl = cl, expr = library(numDeriv))
+
+# Garantindo reprodutibilidade:
 clusterSetRNGStream(cl = cl, iseed = 1)
 
 system.time(result <-
               mc(
                 M = 1000L,
                 n = 50,
-                par_true = c(2, 3, 1),
-                parallel = T,
-                cluster = cl
+                par_true = c(2, 3, 1)
               ))
 stopCluster(cl)

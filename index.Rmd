@@ -297,7 +297,7 @@ background-position: 100% 0%
 - O código ficará mais fácil de **manter** e **debugar**; </br></br>
 
 
-- Utilizando os funcionais disponíveis pelo **r-base** ou por pacotes como o **purrr**, **furrr**  ou qualquer outro pacote que implemente funcionais de forma eficientes, você poderá tornar o seu código computacionalmente mais **eficaz**; </br></br>
+- Utilizando os funcionais disponíveis pelo **r-base** ou por pacotes como o **purrr**, **parallel**, **furrr**  ou qualquer outro pacote que implemente funcionais de forma eficientes, você poderá tornar o seu código computacionalmente mais **eficaz**; </br></br>
 
 
 - É fácil **paralelizar** códigos usando funcionais. Tudo poderá ser feito sem grandes modificações do código original. Isso é uma grande vantagem. 
