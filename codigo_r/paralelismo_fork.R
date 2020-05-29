@@ -77,6 +77,10 @@ mc <- function(M = 1e3L, n = 100L, par_true = c(2, 3, 1), cl = cl) {
   
 }
 
+RNGkind(kind = "L'Ecuyer-CMRG")
+set.seed(0)
+mc.reset.stream()
+
 system.time(result <- mc(M = 1000, n = 100, par_true = c(2, 3, 1), cl = cl))
 
 
